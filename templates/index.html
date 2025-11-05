@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSV to Hash Tool</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-5">
+    <div class="card shadow p-4">
+
+        <h2 class="text-center mb-4 text-primary">🔐 Hash Converter</h2>
+
+        <form action="/" method="POST" enctype="multipart/form-data">
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Upload CSV File</label>
+                <input type="file" class="form-control" name="file" required>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-success w-50">Upload & Convert</button>
+
+                <!-- Reset Button -->
+                <button type="button" class="btn btn-secondary w-50" onclick="window.location.href='/'">
+                    Reset 🔄
+                </button>
+            </div>
+        </form>
+
+        {% if success %}
+        <div class="alert alert-success mt-4 fw-bold text-center">
+            File converted successfully!
+        </div>
+
+        <div class="text-center">
+            <a href="/download/{{ download }}" class="btn btn-primary btn-lg">
+                ⬇️ Download Hashed CSV
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
