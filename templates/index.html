@@ -13,17 +13,17 @@
 
         <h2 class="text-center mb-4 text-primary">🔐 Hash Converter</h2>
 
-        <form action="/" method="POST" enctype="multipart/form-data">
+        <form action="/" method="POST" enctype="multipart/form-data" onsubmit="return validateFile()">
 
             <div class="mb-3">
                 <label class="form-label fw-bold">Upload CSV File</label>
-                <input type="file" class="form-control" name="file" required>
+                <input type="file" class="form-control" name="file" id="file" accept=".csv" required>
+                <small class="text-muted">Only .csv file allowed</small>
             </div>
 
             <div class="d-flex gap-2">
                 <button type="submit" class="btn btn-success w-50">Upload & Convert</button>
 
-                <!-- Reset Button -->
                 <button type="button" class="btn btn-secondary w-50" onclick="window.location.href='/'">
                     Reset 🔄
                 </button>
@@ -32,7 +32,7 @@
 
         {% if success %}
         <div class="alert alert-success mt-4 fw-bold text-center">
-            File converted successfully!
+            ✅ File converted successfully!
         </div>
 
         <div class="text-center">
@@ -42,7 +42,30 @@
         </div>
         {% endif %}
     </div>
+    
+    <!-- Privacy Policy Section -->
+    <div class="mt-4 text-center text-muted small">
+        <h6 class="fw-bold">Privacy Policy</h6>
+        <p>
+           Tool is available for client's one-time CSV processing. After use, service will be removed or paused.
+        </p>
+    </div>
 </div>
+
+<script>
+// Validate file type
+function validateFile() {
+    let fileInput = document.getElementById("file");
+    let filePath = fileInput.value;
+
+    if (!filePath.endsWith(".csv")) {
+        alert("❌ Only CSV files are allowed.");
+        return false;
+    }
+
+    return true;
+}
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
