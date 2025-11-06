@@ -44,8 +44,8 @@ def upload_file():
         df["email"] = df["email"].apply(normalize_email)
         df["phone"] = df["phone"].apply(normalize_phone)
 
-        df["email_hashed"] = df["email"].apply(sha256_hash)
-        df["phone_hashed"] = df["phone"].apply(sha256_hash)
+        df["email"] = df["email"].apply(sha256_hash)
+        df["phone"] = df["phone"].apply(sha256_hash)
 
         df = df.drop(columns=["email", "phone"])
 
@@ -62,3 +62,4 @@ def download_file(filename):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
